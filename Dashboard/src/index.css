@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --bg-main: #F5F9FC;
+    --surface: #FFFFFF;
+    --surface-alt: #EAF2F8;
+    --border: #D5E2EC;
+    
+    --ink: #0B2540;
+    --ink-muted: #4A6178;
+    --ink-faint: #7A8FA3;
+    
+    --primary: #0F6FA8;
+    --primary-hover: #0B5A8A;
+    --primary-soft: #DCEEFA;
+    
+    --accent: #12A594;
+    --silt: #F3EEE3;
+    
+    --p1-text: #D92D20;
+    --p1-bg: #FEE4E2;
+    --p2-text: #B54708;
+    --p2-bg: #FEF0C7;
+    --p3-text: #067647;
+    --p3-bg: #D1FADF;
+
+    --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-hindi: 'Noto Sans Devanagari', 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    
+    --shadow-soft: 0 1px 2px rgba(11, 37, 64, 0.06), 0 8px 24px rgba(11, 37, 64, 0.06);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-main);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Typography Helpers */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-hindi {
+  font-family: var(--font-hindi);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* 8px Strict Container */
+.site-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Soft Cards & Shadows */
+.card-soft {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+/* Standard Buttons (48px tall, px-6, rounded-[12px], font-semibold) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 48px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 48px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-soft);
+  transform: translateY(-1px);
+}
+
+/* Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Signal Badges */
+.badge-p1 {
+  background-color: var(--p1-bg);
+  color: var(--p1-text);
+  border: 1px solid rgba(217, 45, 32, 0.2);
+}
+
+.badge-p2 {
+  background-color: var(--p2-bg);
+  color: var(--p2-text);
+  border: 1px solid rgba(181, 71, 8, 0.2);
+}
+
+.badge-p3 {
+  background-color: var(--p3-bg);
+  color: var(--p3-text);
+  border: 1px solid rgba(6, 118, 71, 0.2);
+}
+
+/* Waveform Bars */
+@keyframes wave-bounce {
+  0%, 100% { height: 6px; }
+  50% { height: 24px; }
+}
+
+.wave-bar-1 { animation: wave-bounce 1s ease-in-out infinite; }
+.wave-bar-2 { animation: wave-bounce 0.8s ease-in-out infinite 0.15s; }
+.wave-bar-3 { animation: wave-bounce 1.2s ease-in-out infinite 0.3s; }
+.wave-bar-4 { animation: wave-bounce 0.9s ease-in-out infinite 0.45s; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
