@@ -1,0 +1,89 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "PK",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "SK",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "TriageLevel",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "UpdatedAt",
+                "AttributeType": "N"
+            }
+        ],
+        "TableName": "resident_data",
+        "KeySchema": [
+            {
+                "AttributeName": "PK",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "SK",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2026-10-10T19:46:58.816000+05:30",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "TableSizeBytes": 2613,
+        "ItemCount": 14,
+        "TableArn": "arn:aws:dynamodb:ap-south-1:660838763475:table/resident_data",
+        "TableId": "9ddb0a4f-b615-4d77-be3b-76e21f96acff",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2026-10-10T19:46:58.816000+05:30"
+        },
+        "GlobalSecondaryIndexes": [
+            {
+                "IndexName": "TriageLevel-UpdatedAt-index",
+                "KeySchema": [
+                    {
+                        "AttributeName": "TriageLevel",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "UpdatedAt",
+                        "KeyType": "RANGE"
+                    }
+                ],
+                "Projection": {
+                    "ProjectionType": "ALL"
+                },
+                "IndexStatus": "ACTIVE",
+                "ProvisionedThroughput": {
+                    "NumberOfDecreasesToday": 0,
+                    "ReadCapacityUnits": 0,
+                    "WriteCapacityUnits": 0
+                },
+                "IndexSizeBytes": 0,
+                "ItemCount": 0,
+                "IndexArn": "arn:aws:dynamodb:ap-south-1:660838763475:table/resident_data/index/TriageLevel-UpdatedAt-index",
+                "WarmThroughput": {
+                    "ReadUnitsPerSecond": 12000,
+                    "WriteUnitsPerSecond": 4000,
+                    "Status": "ACTIVE"
+                }
+            }
+        ],
+        "TableClassSummary": {
+            "TableClass": "STANDARD"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}
