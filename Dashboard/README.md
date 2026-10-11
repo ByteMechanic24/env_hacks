@@ -1,4 +1,4 @@
-# Project Awaaz
+# Project Sentinel
 
 > **"When the water rises, the phone should talk back."**  
 > AI two-way Hindi voice triage for flood response on AWS (WeMakeDevs × AWS Environmental Hacks 2026, Track 2: Heat & Water).
@@ -7,20 +7,20 @@
 
 ## Overview
 
-Project Awaaz is an automated information and triage system designed to replace silent one-way SMS emergency alerts. During flood warnings, Awaaz:
+Project Sentinel is an automated information and triage system designed to replace silent one-way SMS emergency alerts. During flood warnings, Sentinel:
 1. **Warns residents by voice** in respectful, natural Hindi on basic 2G/feature phones.
 2. **Listens and asks about household status** with low-latency barge-in interruption.
 3. **Classifies priority with Amazon Bedrock** (Claude 3.5 Sonnet) into P1 Critical, P2 High, and P3 Safe categories.
 4. **Records structured status data** into Amazon DynamoDB with Global Secondary Indexes.
 5. **Notifies district officials via Amazon SNS** and updates a live household status map.
 
-> **Scope Note**: Awaaz is strictly an information and triage platform. It informs residents, assesses reported household status, and alerts district authorities. Awaaz does **not** dispatch rescue boats, deliver supplies, or operate physical relief missions.
+> **Scope Note**: Sentinel is strictly an information and triage platform. It informs residents, assesses reported household status, and alerts district authorities. Sentinel does **not** dispatch rescue boats, deliver supplies, or operate physical relief missions.
 
 ---
 
 ## Architecture
 
-Project Awaaz is built as a serverless, 3-layer architecture on AWS:
+Project Sentinel is built as a serverless, 3-layer architecture on AWS:
 
 ```
 [Officer Console] → [API Gateway (REST)] → [Alert Orchestrator (Lambda)] → [DynamoDB Registry]
@@ -49,7 +49,7 @@ Project Awaaz is built as a serverless, 3-layer architecture on AWS:
 - **Amazon SQS & DLQ**: Throttles calls to carrier limits with dead-letter queue recovery after 3 retries.
 
 ### 2. Telephony & Audio Bridge (Layer 2)
-- **Call Worker Lambda**: Reserved concurrency (50) worker consuming queue items and placing outbound phone calls via Exotel API. Credentials securely retrieved from AWS Secrets Manager (`awaaz/exotel`).
+- **Call Worker Lambda**: Reserved concurrency (50) worker consuming queue items and placing outbound phone calls via Exotel API. Credentials securely retrieved from AWS Secrets Manager (`sentinel/exotel`).
 - **Exotel Outbound Call**: Cellular telephony platform routing calls across Indian carriers with voice streaming applets.
 - **WebSocket Bridge Lambda**: Relays telephony audio between Exotel and ElevenLabs, transcoding sample rates as needed (8 kHz telephony ↔ 16 kHz), and flushes buffered audio on barge-in.
 - **ElevenLabs Conversational AI**: Natural Hindi voice synthesis and acoustic turn-taking.

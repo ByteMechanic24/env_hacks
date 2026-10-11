@@ -37,7 +37,7 @@ export function Hero({ onScrollToSimulation }) {
 
             {/* Sub */}
             <p className="text-lg md:text-[1.0625rem] text-[#4A6178] leading-[1.65] max-w-[54ch]">
-              Awaaz calls flood-risk families in Hindi, listens to their status, and tells officials who is most at risk.
+              Sentinel calls flood-risk families in Hindi, listens to their status, and tells officials who is most at risk.
             </p>
 
             {/* CTAs */}

@@ -61,7 +61,7 @@ export function ProblemSection({ onScrollToSolution }) {
             onClick={onScrollToSolution}
             className="inline-flex items-center gap-2 text-base font-semibold text-[#0F6FA8] hover:text-[#0B5A8A] transition-colors cursor-pointer group"
           >
-            <span>See how Awaaz fixes this</span>
+            <span>See how Sentinel fixes this</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>

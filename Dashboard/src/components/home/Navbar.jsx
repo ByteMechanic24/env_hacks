@@ -29,11 +29,11 @@ export function Navbar() {
     <>
       <header className="fixed top-0 left-0 right-0 z-50 h-16 bg-white/80 backdrop-blur-md border-b border-[#D5E2EC]">
         <div className="site-container h-full flex items-center justify-between">
-          {/* Left: Waveform Logo + "Awaaz" on ONE line */}
+          {/* Left: Waveform Logo + "Sentinel" on ONE line */}
           <Link
             to="/"
             className="flex items-center gap-2.5 text-[#0B2540] hover:text-[#0F6FA8] transition-colors"
-            aria-label="Project Awaaz Home"
+            aria-label="Project Sentinel Home"
           >
             <div className="w-8 h-8 rounded-lg bg-[#DCEEFA] flex items-center justify-center gap-0.5 px-1.5" aria-hidden="true">
               <span className="w-1 bg-[#12A594] rounded-full wave-bar-1" />
@@ -42,7 +42,7 @@ export function Navbar() {
               <span className="w-1 bg-[#12A594] rounded-full wave-bar-4" />
             </div>
             <span className="font-heading font-bold text-lg tracking-tight text-[#0B2540]">
-              Awaaz
+              Sentinel
             </span>
           </Link>
 

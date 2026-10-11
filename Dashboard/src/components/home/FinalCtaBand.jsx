@@ -10,7 +10,7 @@ export function FinalCtaBand({ onScrollToSimulation }) {
 
       <div className="site-container relative z-10 text-center max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111827] border border-[#1F2E47] text-xs font-mono text-[#8E9DB7] mb-6">
-          <span className="text-[#2DD4BF]">PROJECT AWAAZ //</span>
+          <span className="text-[#2DD4BF]">PROJECT SENTINEL //</span>
           <span>MISSION CONTROL TO ARCHITECTURE</span>
         </div>
 

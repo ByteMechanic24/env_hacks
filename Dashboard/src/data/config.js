@@ -1,7 +1,7 @@
-// Source of truth config for Project Awaaz
+// Source of truth config for Project Sentinel
 export const CONFIG = {
-  NAME: "Project Awaaz",
-  PHONETIC: "अवाज़",
+  NAME: "Project Sentinel",
+  PHONETIC: "सेंटिनल",
   TAGLINE: "When the water rises, the phone should talk back.",
   SUBHEAD: "Two-way Hindi AI voice triage for flood response on AWS.",
   HACKATHON: "WeMakeDevs × AWS Environmental Hacks 2026",
@@ -9,8 +9,8 @@ export const CONFIG = {
   DEMO_GEOGRAPHY: "Bihar Kosi/Gandak Plains (Khagaria District)",
   SIMULATION_BADGE: "Simulated playback — scripted from our real call flow",
   BEDROCK_MODEL: "Claude 3.5 Sonnet on Amazon Bedrock",
-  DEVPOST_URL: "https://devpost.com/software/project-awaaz",
-  GITHUB_URL: "https://github.com/project-awaaz/awaaz-flood-triage",
+  DEVPOST_URL: "https://devpost.com/software/project-sentinel",
+  GITHUB_URL: "https://github.com/project-sentinel/sentinel-flood-triage",
 };
 
 // NON-NEGOTIABLE HONESTY RULES:

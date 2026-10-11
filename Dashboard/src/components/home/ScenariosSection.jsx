@@ -57,7 +57,7 @@ export function ScenariosSection({ onScrollToSimulation }) {
             Environmental Disaster Scenarios
           </h2>
           <p className="text-base sm:text-lg text-[#8E9DB7] font-ui">
-            Track 2 focuses on Heat & Water. Project Awaaz is built live for river flooding and architected to extend to heatwave and air quality crises.
+            Track 2 focuses on Heat & Water. Project Sentinel is built live for river flooding and architected to extend to heatwave and air quality crises.
           </p>
         </div>
 

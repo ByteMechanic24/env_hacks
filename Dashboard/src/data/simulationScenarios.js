@@ -117,7 +117,7 @@ export const PIPELINE_NODES = [
   { id: "api_gw", name: "API Gateway", label: "POST /alert" },
   { id: "orchestrator", name: "Orchestrator", label: "Lambda" },
   { id: "validation", name: "Validation Guard", label: "Dedup / Status" },
-  { id: "sqs", name: "SQS Queue", label: "awaaz-calls" },
+  { id: "sqs", name: "SQS Queue", label: "sentinel-calls" },
   { id: "call_worker", name: "Call Worker", label: "Concurrency 50" },
   { id: "exotel", name: "Exotel", label: "Outbound Call" },
   { id: "elevenlabs", name: "ElevenLabs", label: "Hindi Agent" },
@@ -181,7 +181,7 @@ export const SIMULATION_SCENARIOS = [
       {
         t: 6,
         activeNode: "sqs",
-        log: "SQS: Enqueued 8 alerts to awaaz-call-queue. DLQ empty.",
+        log: "SQS: Enqueued 8 alerts to sentinel-call-queue. DLQ empty.",
         sqsCount: 8,
         dlqCount: 0,
         callStatus: "ENQUEUED",
@@ -214,8 +214,8 @@ export const SIMULATION_SCENARIOS = [
         callStatus: "CONNECTED",
         speech: {
           speaker: "agent",
-          hindi: "नमस्कार रमेश जी। यह आवाज़ अलर्ट है। कोसी नदी का पानी खतरे के निशान के करीब है। क्या आप सुरक्षित जगह पर चले गए हैं?",
-          english: "Namaskar Ramesh ji. This is an Awaaz alert. The Kosi river is near the danger mark. Have you moved to a safe location?",
+          hindi: "नमस्कार रमेश जी। यह सेंटिनल अलर्ट है। कोसी नदी का पानी खतरे के निशान के करीब है। क्या आप सुरक्षित जगह पर चले गए हैं?",
+          english: "Namaskar Ramesh ji. This is a Sentinel alert. The Kosi river is near the danger mark. Have you moved to a safe location?",
         },
       },
       {
@@ -571,7 +571,7 @@ export const SIMULATION_SCENARIOS = [
       {
         t: 18,
         activeNode: "sqs",
-        log: "SQS Dead-Letter Queue: maxReceiveCount (3) exceeded. Moving message to awaaz-dlq.",
+        log: "SQS Dead-Letter Queue: maxReceiveCount (3) exceeded. Moving message to sentinel-dlq.",
         sqsCount: 0,
         dlqCount: 1,
         callStatus: "DLQ_ROUTED",
@@ -580,7 +580,7 @@ export const SIMULATION_SCENARIOS = [
       {
         t: 22,
         activeNode: "dynamodb",
-        log: "DynamoDB: awaaz_call_log marked STATUS=DLQ_EXHAUSTED. Unreached record logged.",
+        log: "DynamoDB: sentinel_call_log marked STATUS=DLQ_EXHAUSTED. Unreached record logged.",
         sqsCount: 0,
         dlqCount: 1,
         callStatus: "ESCALATED",

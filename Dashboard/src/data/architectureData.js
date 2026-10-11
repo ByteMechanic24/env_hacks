@@ -70,7 +70,7 @@ export const ARCHITECTURE_NODES = [
     role: "Queries registered households by partition, validates 30-min recency, and fans out into SQS.",
     config: "Memory: 512 MB, Timeout: 30s, Ephemeral storage: 512 MB, Active X-Ray tracing enabled.",
     why: "Stateless asynchronous pipeline entry point capable of fanning out thousands of records into SQS in milliseconds.",
-    iamNote: "dynamodb:Query on awaaz_residents, sqs:SendMessageBatch on awaaz-call-queue.",
+    iamNote: "dynamodb:Query on sentinel_residents, sqs:SendMessageBatch on sentinel-call-queue.",
     snippet: `def handler(event, context):
     residents = query_residents(district, pincodes)
     for r in residents:
@@ -105,11 +105,11 @@ SK: PIN#841301#RES#101
     status: "built",
     coords: { x: 760, y: 80 },
     role: "Buffers outbound calls to throttle against carrier limits and guarantees delivery with DLQ redrive.",
-    config: "VisibilityTimeout: 240s, Retention: 14400s (4h), RedrivePolicy: maxReceiveCount=3 to awaaz-dlq.",
+    config: "VisibilityTimeout: 240s, Retention: 14400s (4h), RedrivePolicy: maxReceiveCount=3 to sentinel-dlq.",
     why: "Prevents overwhelming carrier trunking limits and automatically catches persistent call failures.",
     iamNote: "sqs:ReceiveMessage, sqs:DeleteMessage, sqs:ChangeMessageVisibility by CallWorkerLambda.",
     snippet: `{
-  "deadLetterTargetArn": "arn:aws:sqs:...:awaaz-dlq",
+  "deadLetterTargetArn": "arn:aws:sqs:...:sentinel-dlq",
   "maxReceiveCount": 3
 }`,
   },
@@ -123,9 +123,9 @@ SK: PIN#841301#RES#101
     role: "SQS event consumer that triggers outbound phone calls via Exotel API with reserved concurrency 50.",
     config: "Reserved Concurrency: 50, BatchSize: 1, Timeout: 60s, Exotel API credentials in Secrets Manager.",
     why: "Decouples worker execution from carrier connection latency and enforces concurrency controls.",
-    iamNote: "secretsmanager:GetSecretValue for awaaz/exotel, dynamodb:PutItem on awaaz_call_log.",
+    iamNote: "secretsmanager:GetSecretValue for sentinel/exotel, dynamodb:PutItem on sentinel_call_log.",
     snippet: `export const handler = async (event) => {
-  const creds = await getSecret('awaaz/exotel');
+  const creds = await getSecret('sentinel/exotel');
   await exotelClient.calls.create({ to, from: creds.EXOPHONE, flow: creds.FLOW_ID });
 };`,
   },
@@ -222,7 +222,7 @@ KeyCondition: priority = 'P1_CRITICAL' AND timestamp > :cutoff`,
     status: "built",
     coords: { x: 580, y: 415 },
     role: "Fans out instantaneous SMS and email notifications to district officials on priority status updates.",
-    config: "Topic: awaaz-p1-critical-alerts.fifo, Delivery retry: exponential backoff.",
+    config: "Topic: sentinel-p1-critical-alerts.fifo, Delivery retry: exponential backoff.",
     why: "Reliable out-of-band mobile notifications to district coordinators without requiring them to stare at dashboard.",
     iamNote: "sns:Publish restricted to TriageEvaluationLambda.",
     snippet: `await sns.publish({
@@ -302,7 +302,7 @@ export const TRIGGER_LAYER_STEPS = [
     step: 5,
     title: "Batch Enqueue to SQS",
     service: "Amazon SQS",
-    description: "Orchestrator enqueues valid records into `awaaz-call-queue` with a 240s visibility timeout. Dead-letter queue attached.",
+    description: "Orchestrator enqueues valid records into `sentinel-call-queue` with a 240s visibility timeout. Dead-letter queue attached.",
   },
   {
     step: 6,
@@ -314,7 +314,7 @@ export const TRIGGER_LAYER_STEPS = [
     step: 7,
     title: "Dialing State Write & Call Tracking",
     service: "DynamoDB Call Log",
-    description: "Call SID and initial DIALING status written to `awaaz_call_log` with TTL set to 24 hours.",
+    description: "Call SID and initial DIALING status written to `sentinel_call_log` with TTL set to 24 hours.",
   },
 ];
 

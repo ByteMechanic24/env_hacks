@@ -22,7 +22,7 @@ import {
 const PIPELINE_NODES = [
   { id: 'api_gw', name: 'API Gateway', role: 'POST /alert' },
   { id: 'validation', name: 'Validation Guard', role: '30-min dedup' },
-  { id: 'sqs', name: 'SQS Queue', role: 'awaaz-calls' },
+  { id: 'sqs', name: 'SQS Queue', role: 'sentinel-calls' },
   { id: 'call_worker', name: 'Call (Exotel)', role: 'Voice Outbound' },
   { id: 'elevenlabs', name: 'Voice (ElevenLabs)', role: 'Hindi Agent' },
   { id: 'bedrock', name: 'Triage & Notify', role: 'Claude 3.5' },
