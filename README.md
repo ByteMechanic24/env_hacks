@@ -1,7 +1,7 @@
 # 🌊 Project Sentinel
 
 **Closing the feedback loop in flood response: from government bulletin to rescue dispatch in seconds.**
-
+https://github.com/user-attachments/assets/f82f666e-88f9-4e26-8c99-4adc71800f6b
 > WeMakeDevs Hackathon 2026 · Track 2: Heat & Water · AWS Region `ap-south-1` (Mumbai)
 
 ![AWS](https://img.shields.io/badge/AWS-ap--south--1-FF9900)
@@ -9,15 +9,6 @@
 ![Voice](https://img.shields.io/badge/Voice-ElevenLabs%20Conversational%20AI-black)
 ![Scale](https://img.shields.io/badge/Scale-100%20parallel%20calls-success)
 ![SLA](https://img.shields.io/badge/P1%20SLA-%3C5s-red)
-
-
-
-
-https://github.com/user-attachments/assets/f82f666e-88f9-4e26-8c99-4adc71800f6b
-
-
-
-
 
 ---
 
