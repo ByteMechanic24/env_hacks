@@ -2,15 +2,13 @@
 
 **Closing the feedback loop in flood response: from government bulletin to rescue dispatch in seconds.**
 
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/f82f666e-88f9-4e26-8c99-4adc71800f6b" controls width="100%"></video>
+</p>
 
-
-https://github.com/user-attachments/assets/f82f666e-88f9-4e26-8c99-4adc71800f6b
-
-
-
-
-
-
+<p align="center">
+  <a href="https://youtu.be/wKx5jb-06PE"><b>▶️ Not loading? Watch on YouTube</b></a>
+</p>
 
 > WeMakeDevs Hackathon 2026 · Track 2: Heat & Water · AWS Region `ap-south-1` (Mumbai)
 
